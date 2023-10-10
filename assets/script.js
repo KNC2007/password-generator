@@ -6,14 +6,6 @@ var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "1234567890";
 var specialCharacters = "!$%&'()#*+,-./:][;<=>?@/^_`{|}~"
 
-// var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-// var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-// var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-// var specialCharacters = ["!", "$", "%", "&", "'", "(", ")", "#", "*", "+", ",", "-", ".", "/", ":", "]", "[", ";", "<", "=", ">", "?", "@", "/", "^", "_", "`", "{", "|", "}", "~"];
-
-// var userPassword = lowerCase[0] + upperCase[0] + numbers[0] + specialCharacters[0];
-
-
 
 // create the function here
 // prompt to get the number of characters in password - click OK
@@ -21,20 +13,38 @@ function writePassword() {
   // var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  var userPassword = " ";
+  var userPassword = "";
 
-  // Ask user for their choice in password length
-  var userPasswordLength = window.prompt("How many characters long should your password be? Enter a number between 8 and 128.");
-  // change to number and not string
-  userPasswordLength = parseInt(userPasswordLength)
-  // if click cancel put here // then a CONFIRM pop up screen
-  // what is user leaves it blank or presses cancel**
-  console.log(userPasswordLength)
+//   // Ask user for their choice in password length
+//   var userPasswordLength = window.prompt("How many characters long should your password be? Enter a number between 8 and 128.");
 
-  if(userPasswordLength < 8 || userPasswordLength > 128) {
-    window.alert ("Insert a number between 8 and 128.")
-    return
+
+//   // if click cancel put here // then a CONFIRM pop up screen
+//   // what is user leaves it blank or presses cancel**
+
+// // if(userPasswordLength < 8 || userPasswordLength > 128 || typeof userPasswordLength != "number") {
+// //     window.alert ("Insert a valid number between 8 and 128.");
+// //     return
+// //   } 
+// //   console.log(userPasswordLength)
+
+
+  while (true) {
+    // Ask user for their choice in password length
+    var userPasswordLength = window.prompt("How many characters long should your password be? Enter a number between 8 and 128.");
+
+    // Check if the input is not a number or if it's outside the valid range
+    if (isNaN(userPasswordLength) || userPasswordLength < 8 || userPasswordLength > 128) {
+      window.alert("Please, insert a valid number between 8 and 128.");
+    } else {
+      // Valid input, break out of the loop
+      break;
+    }
   }
+
+  // change to number and not a string
+  userPasswordLength = parseInt(userPasswordLength)
+ 
   
   // need 4 ifs with 4 confirm Expression Conditionals
   var userLowerCase = window.confirm("Do you want your password to include lowercase letters?")
@@ -65,13 +75,15 @@ function writePassword() {
     userPassword += specialCharacters
   }
   
-  var password = " ";
+  var password = "";
   
   // processing... (randomly generate characters)
   for (var i = 0; i < userPasswordLength; i++) {
     password += userPassword[Math.floor(Math.random() * userPassword.length)]
   }
   // return look up math random code (whatever goes in return will come out the other side on the generator)
+
+// Write password to the #password input
    passwordText.value = password;
    return password
 
@@ -80,7 +92,6 @@ function writePassword() {
 
 
 
-// Write password to the #password input
 
 
 // Add event listener to generate button
