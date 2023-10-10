@@ -8,13 +8,14 @@ var specialCharacters = "!$%&'()#*+,-./:][;<=>?@/^_`{|}~"
 
 
 // create the function here
-// prompt to get the number of characters in password - click OK
+
 function writePassword() {
   // var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   var userPassword = "";
 
+// prompt to get the number of characters in password - click OK
 //   // Ask user for their choice in password length
 //   var userPasswordLength = window.prompt("How many characters long should your password be? Enter a number between 8 and 128.");
 
@@ -88,11 +89,6 @@ function writePassword() {
    return password
 
 }
-
-
-
-
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
